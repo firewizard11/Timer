@@ -8,20 +8,22 @@ class Timer:
         self.sec = 0
         self.min = 0
         self.hr = 0
-        self.timer_thread = None
+        self.is_running = False
+        self.timer_thread = threading.Thread(target=self._timer_loop)
 
     def start(self):
-        pass
-        
+        self.is_running = True
+        self.timer_thread.start()
+
     def stop(self):
-        pass
+        self.is_running = False
 
     def reset(self):
         self.sec = 0
         self.min = 0
         self.hr = 0
 
-    def increment(self):
+    def _increment(self):
         self.sec += 1
         
         if self.sec > 59:
@@ -32,10 +34,7 @@ class Timer:
             self.min = 0
             self.hr += 1
 
-if __name__ == "__main__":
-    timer = Timer()
-
-    while True:
-        print(f"{timer.hr}:{timer.min}:{timer.sec}", end='\r')
-
-        timer.increment()
+    def _timer_loop(self):
+        while self.is_running:
+            self._increment()
+            time.sleep(1)
