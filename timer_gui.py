@@ -8,7 +8,6 @@ class TimerGUI:
     def __init__(self):
         self.timer = timer.Timer()
         self.root = Tk()
-        self.root.after(500, self._update_time)
 
         self.frame = ttk.Frame(self.root)
         self.frame.grid_configure(column=3, row=3)
