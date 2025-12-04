@@ -8,6 +8,7 @@ class TimerGUI:
     def __init__(self):
         self.timer = timer.Timer()
         self.root = Tk()
+        self.root.protocol("WM_DELETE_WINDOW", self._close_gui)
 
         self.frame = ttk.Frame(self.root)
         self.frame.grid_configure(column=3, row=3)
@@ -44,7 +45,8 @@ class TimerGUI:
         self.btn_start.grid(column=1, row=3)
 
     def reset_timer(self):
-        pass
+        self.stop_timer()
+        self.timer.reset()
 
     def _update_time(self):
         self.str_time.set("{}h:{}m:{}s".format(
@@ -54,6 +56,9 @@ class TimerGUI:
         ))
         self.root.after(500, self._update_time)
 
+    def _close_gui(self):
+        self.timer.stop()
+        self.root.destroy()
 
 if __name__ == "__main__":
     gui = TimerGUI()
