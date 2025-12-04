@@ -8,6 +8,7 @@ class TimerGUI:
     def __init__(self):
         self.timer = timer.Timer()
         self.root = Tk()
+        self.root.after(500, self._update_time)
 
         self.frame = ttk.Frame(self.root)
         self.frame.grid_configure(column=3, row=3)
@@ -32,10 +33,16 @@ class TimerGUI:
         self.root.mainloop()
 
     def start_timer(self):
-        pass
+        self.timer.start()
+
+        self.btn_start.grid_forget()
+        self.btn_stop.grid(column=1, row=3)
 
     def stop_timer(self):
-        pass
+        self.timer.stop()
+
+        self.btn_stop.grid_forget()
+        self.btn_start.grid(column=1, row=3)
 
     def reset_timer(self):
         pass
@@ -46,6 +53,8 @@ class TimerGUI:
             self.timer.min,
             self.timer.sec
         ))
+        self.root.after(500, self._update_time)
+
 
 if __name__ == "__main__":
     gui = TimerGUI()
