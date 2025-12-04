@@ -9,10 +9,11 @@ class Timer:
         self.min = 0
         self.hr = 0
         self.is_running = False
-        self.timer_thread = threading.Thread(target=self._timer_loop)
 
     def start(self):
         self.is_running = True
+
+        self.timer_thread = threading.Thread(target=self._timer_loop)
         self.timer_thread.start()
 
     def stop(self):
