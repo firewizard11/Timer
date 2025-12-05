@@ -86,6 +86,3 @@ class TimerGUI:
     def _close_gui(self):
         self.timer.stop()
         self.root.destroy()
-
-if __name__ == "__main__":
-    gui = TimerGUI()
