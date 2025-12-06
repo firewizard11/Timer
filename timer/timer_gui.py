@@ -20,9 +20,8 @@ class TimerGUI:
         self.lbl_title = ttk.Label(
             self.frame, 
             text="Timer",
-            font="Arial",
+            font="Arial 24 bold underline",
             justify="center",
-            underline=TRUE,
         )
         self.lbl_title.grid(column=2, row=1)
 
@@ -31,7 +30,8 @@ class TimerGUI:
         self.lbl_time = ttk.Label(
             self.frame, 
             textvariable=self.str_time,
-            font="Arial",
+            font="Arial 20",
+            justify="center"
         )
         self.lbl_time.grid(column=2, row=2)
 
