@@ -8,7 +8,7 @@ class TimerGUI:
     def __init__(self):
         self.timer = timer.Timer()
 
-        self.root = Tk(screenName="Timer")
+        self.root = Tk(className="Timer")
         self.root.protocol("WM_DELETE_WINDOW", self._close_gui)
 
         self.frame = ttk.Frame(
